@@ -31,34 +31,33 @@ public class NewCustomerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String firstName = request.getParameter("firstName");
-        if (firstName.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a first name.");
         String lastName = request.getParameter("lastName");
-        if (lastName.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a last name.");
         String phone = request.getParameter("phone");
-        if (phone.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a phone number.");
         String address = request.getParameter("address");
-        if (address.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter an address.");
         String city = request.getParameter("city");
-        if (city.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a city.");
         String state = request.getParameter("state");
-        if (state.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a state.");
         String zipcode = request.getParameter("zipcode");
-        if (zipcode.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a zipcode.");
-        String email = request.getParameter("email");
-        if (email.length() == 0)
-            JOptionPane.showMessageDialog(null, "Please enter a email.");
+        String email = request.getParameter("email");   
         
-        Customer customer = new Customer(firstName,lastName,phone,address,city,state,zipcode,email);
-        
-        response.sendRedirect("Success.html");
+        if(firstName==null||lastName==null||phone==null||address==null||city==null||state==null||zipcode==null||email==null)
+        {
+            response.sendRedirect("New_customer.jsp");
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<html>"
+                    + "<h1>Please fill out all the form fields."
+                    + ""
+                    + ""
+                    + "</html>");
+            
+        }
+        else
+        {
+            Customer customer = new Customer(firstName,lastName,phone,address,city,state,zipcode,email);
+            response.sendRedirect("Success.html");   
+        }
         //response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
         
