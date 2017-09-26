@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/TOBA"/>
+<Context>
+    <Context antiJARLocking="true" path="/TOBA"/>
+
+<Resource name="jdbc/UserDB"
+
+auth="Container"
+
+type="javax.sql.DataSource"
+
+username="root"
+
+password="bynton"
+
+driverClassName="com.mysql.jdbc.Driver"
+
+url="jdbc:mysql:/localhost:3306/TOBA"
+
+maxActive="15"
+
+maxIdle="3"/>
+
+</Context>
