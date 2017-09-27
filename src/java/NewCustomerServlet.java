@@ -5,6 +5,7 @@
  */
 
 import business.Customer;
+import business.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletContext;
@@ -31,6 +32,7 @@ public class NewCustomerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = "/index.jsp";
         
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -39,7 +41,13 @@ public class NewCustomerServlet extends HttpServlet {
         String city = request.getParameter("city");
         String state = request.getParameter("state");
         String zipcode = request.getParameter("zipcode");
-        String email = request.getParameter("email");   
+        String email = request.getParameter("email"); 
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        User customer = new User(firstName,lastName,phone,address,city,state,zipcode,email,username,password);
+        UserDB.insert(customer);
+
         
         if(firstName==null||lastName==null||phone==null||address==null||city==null||state==null||zipcode==null||email==null)
         {
@@ -55,9 +63,14 @@ public class NewCustomerServlet extends HttpServlet {
         }
         else
         {
-            Customer customer = new Customer(firstName,lastName,phone,address,city,state,zipcode,email);
-            response.sendRedirect("Success.html");   
+            url = "/success.jsp";
+            //UserDB.insert(customer);
         }
+        request.setAttribute("customer", customer);
+
+        getServletContext()
+                .getRequestDispatcher(url)
+                .forward(request, response);
         //response.setContentType("text/html;charset=UTF-8");
         //PrintWriter out = response.getWriter();
         

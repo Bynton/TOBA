@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<c:import url="/header.html" />
+<%@ page import="java.sql.*"%>
+<% Class.forName("com.mysql.jdbc.Driver"); %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,3 +32,4 @@
             <input type="submit" value="Register">
     </form>
 </html>
+<c:import url="/footer.jsp" />
