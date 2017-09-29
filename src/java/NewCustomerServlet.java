@@ -42,8 +42,8 @@ public class NewCustomerServlet extends HttpServlet {
         String state = request.getParameter("state");
         String zipcode = request.getParameter("zipcode");
         String email = request.getParameter("email"); 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = lastName + zipcode;
+        String password = "welcome1";
         
         User customer = new User(firstName,lastName,phone,address,city,state,zipcode,email,username,password);
         UserDB.insert(customer);
@@ -64,7 +64,6 @@ public class NewCustomerServlet extends HttpServlet {
         else
         {
             url = "/success.jsp";
-            //UserDB.insert(customer);
         }
         request.setAttribute("customer", customer);
 

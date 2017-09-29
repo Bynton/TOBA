@@ -1,9 +1,8 @@
 
+import business.DBUtil;
 import business.User;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,17 +14,22 @@ import java.sql.ResultSet;
  *
  * @author bento
  */
-class UserDB {
-    
-    private static String URL = "jdbc:mysql://localhost:3306/userdb";
-    private static String USERNAME = "root";
-    private static String PASSWORD = "bynton";
-    
-    Connection connection = null;
-    PreparedStatement actors = null;
-    ResultSet resultSet = null;
-
-    static void insert(User customer){
+public class UserDB {
+    public static void insert(User user){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try{
+            em.persist(user);
+            trans.commit();       
+        }
+        catch(Exception e){
+            System.out.println(e);
+            trans.rollback();
+        }
+        finally{
+            em.close();
+        }
         
     }
     
