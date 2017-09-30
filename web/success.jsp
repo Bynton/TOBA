@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:import url="/header.html" />
 <html>
@@ -23,3 +24,4 @@
         <label>Password: </label><span>${customer.password}</span><br>
         <a href="index.html">Home</a>
 </html>
+<c:import url="/footer.jsp" />

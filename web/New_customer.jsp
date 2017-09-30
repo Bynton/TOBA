@@ -6,12 +6,12 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<c:import url="/header.html" />
 <%@ page import="java.sql.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% Class.forName("com.mysql.jdbc.Driver"); %>
-<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:import url="/header.html" />
         <title>New Customer</title>
     </head>
     <body>
@@ -31,5 +31,4 @@
             
             <input type="submit" value="Register">
     </form>
-</html>
-<c:import url="/footer.jsp" />
+    <c:import url="/footer.jsp" />
