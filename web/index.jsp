@@ -26,7 +26,8 @@
             <a href="New_customer.jsp">New Customer</a><br>
             <a href="Account_activity.html">Account Activity</a><br>
             <a href="Transaction.html">Transaction</a><br>
-            <a href="password_reset.jsp">Reset Password </a><br>
+            <a href="password_reset.jsp">Reset Password </a><br><br>
+            <a href="admin/login.html">ADMIN</a><br>
         </h3>
              
     </body>

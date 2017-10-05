@@ -10,4 +10,9 @@
             maxActive="8" 
             maxIdle="4"
             validationQuery="SELECT 1"/> 
+  
+  <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
+         dataSourceName="jdbc/TOBADB" localDataSource="true"
+         userTable="UserPass" userNameCol="Username" userCredCol="Password"
+         userRoleTable="UserRole" roleNameCol="Rolename" />
 </Context>
